@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CodingPhase</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script async defer
+            src = "https://buttons.github.io/buttons.js"></script>
+    <script src = "https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .counter{
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            border: 2px solid #000;
+        }
+        .counter #digitalNumber{
+            width: 100%;
+            text-align: center;
+            font-size: 4rem;
+        }
+        .counter .buttons{
+            width: 100%;
+            display: flex;
+            border-top: 2px solid #000;
+            font-size: 3rem;
+        }
+        .counter .buttons .button{
+            width: 50%;
+            background: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            transition: background .4s ease-in-out;
+            cursor: pointer;
+        }
+        
+        .counter .buttons .button:hover{
+            background: red;
+        }
+
+    </style>
+  </head>
+
+<!-- ========================BODY=============================================== -->
+
+  <body>
+        <div class = "counter">
+            <div id = "digitalNumber">0</div>
+            <div class = "buttons">
+            <div id = "increment" class = "button">+</div>
+            <div id = "decrement" class = "button">-</div>
+            </div>
+        </div>
+        
+    <!-- =====================SCRIPT================================= -->
+    <script>
+        const { createStore, combineReducers } = Redux;
+        // Action Creators
+        const clickedIncrement = () => {
+            return {
+                type: "clickedIncrement",
+                payload: 'Plus'
+            };
+        };
+        const clickedDecrement = () => {
+            return {
+                type: "clickedDecrement",
+                payload: 'Minus'
+            };
+        };
+
+        // Reducers
+        let newState = 0;;
+        const counterReducer = (state = 0, action) => {
+            switch (action.type) {
+                case "clickedIncrement":
+                    newState = state + 1;
+                    return newState;
+                    break;
+                case "clickedDecrement":
+                    newState = state - 1;
+                    return newState;
+                    break;
+                default:
+                    return state;
+                    break;
+            }
+        };
+        const allReducers = combineReducers({
+            counterReducer
+        });
+        const store = createStore(allReducers);
+        const incBtn = document.getElementById("increment");
+        const decBtn = document.getElementById("decrement");
+
+        incBtn.addEventListener('click', () => {
+            store.dispatch(clickedIncrement());
+        })
+        decBtn.addEventListener('click', () => {
+            store.dispatch(clickedDecrement());
+        })
+        const render = () => {
+            const appState = store.getState().counterReducer;
+            console.log("======AppState");
+            console.log(appState);
+            document.getElementById("digitalNumber").innerHTML = appState;
+        };
+        render();
+        store.subscribe(render);
+    </script>
+    <!-- =====================SCRIPTEND============================= -->
+  </body>
+</html>
