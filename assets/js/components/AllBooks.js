@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+import { openBookInfo } from '../actions/allActions.js';
 
-export default class AllBooks extends Component {
+class AllBooks extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -11,11 +12,13 @@ export default class AllBooks extends Component {
 	clickedBtn = () => {};
 	async test() {}
 	render() {
+		console.log(this.props);
 		return (
 			// =====================ALLBOOKS============================
 			<section className="allBooks">
 				<div className="bookContainer">
 					<div
+						onClick={this.props.openBookInfo}
 						className="book"
 						style={{
 							background: `url('img/subterraneanBook.jpg') center center no-repeat`,
@@ -28,3 +31,12 @@ export default class AllBooks extends Component {
 		);
 	}
 }
+
+const mapStateToProps = state => {
+	console.log(state);
+	return state;
+};
+
+export default connect(mapStateToProps, { openBookInfo: openBookInfo })(
+	AllBooks
+);
