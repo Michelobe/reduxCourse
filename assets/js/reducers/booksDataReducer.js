@@ -2,7 +2,7 @@ export const booksDataReducer = () => {
 	return [
 		// ====== 1 ==========
 		{
-			id: '',
+			id: '1',
 			title: 'Subterranean',
 			author: 'James Rollins',
 			category: 'Novel, Thriller, Suspense, Adventure Fiction',
@@ -13,7 +13,7 @@ export const booksDataReducer = () => {
 		},
 		// ====== 2 ==========
 		{
-			id: '',
+			id: '2',
 			title: 'The Crucible',
 			author: 'James Rollins',
 			category: 'Novel, Thriller, Suspense, Adventure Fiction',
@@ -25,7 +25,7 @@ export const booksDataReducer = () => {
 		},
 		// ====== 3 ==========
 		{
-			id: '',
+			id: '3',
 			title: 'Halo: The Fall of Reach',
 			author: 'Eric Nylund',
 			category: 'Novel, Science Fiction, Military science fiction',
@@ -37,7 +37,7 @@ export const booksDataReducer = () => {
 		},
 		// ====== 4 ==========
 		{
-			id: '',
+			id: '4',
 			title: 'Halo: The Flood',
 			author: 'Eric Nylund',
 			category:
@@ -50,7 +50,7 @@ export const booksDataReducer = () => {
 		},
 		// ====== 5 ==========
 		{
-			id: '',
+			id: '5',
 			title: 'Clean Code: A Handbook of Agile Software Craftsmanship',
 			author: 'Robert C. Martin',
 			category: 'education, information',
@@ -62,7 +62,7 @@ export const booksDataReducer = () => {
 		},
 		// ====== 6 ==========
 		{
-			id: '',
+			id: '6',
 			title: 'The Great Gatsby',
 			author: 'F. Scott Fitzgerald',
 			category: 'Novel, Comics, Tragedy, Psychological Fiction',

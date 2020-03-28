@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { closeBookInfo } from '../actions/allActions.js';
 
 class Modal extends Component {
 	constructor() {
@@ -18,7 +19,7 @@ class Modal extends Component {
 				className={this.props.globalState.popupOpen == true ? 'active' : ''}
 			>
 				<div className="modalContainer">
-					<div className="closeModal">
+					<div className="closeModal" onClick={this.props.closeBookInfo}>
 						<i className="far fa-times-circle"></i>
 					</div>
 					<div className="modalGrid">
@@ -27,30 +28,28 @@ class Modal extends Component {
 							<div
 								className="cover"
 								style={{
-									background: `url('img/subterraneanBook.jpg') center center no-repeat`,
+									background: `url('${this.props.globalState.openBookInfo.coverURL}') center center no-repeat`,
 									backgroundSize: `contain`
 								}}
 							></div>
 							{/* EMPTY/BOOK IMAGE BACKGROUND */}
 						</div>
 						<div className="info">
-							<h2>Subterranean</h2>
+							<h2>{this.props.globalState.openBookInfo.title}</h2>
 							<div className="infoLine">
 								<span className="bold">Author: </span>
-								James Rollins
+								{this.props.globalState.openBookInfo.author}
 							</div>
 							<div className="infoLine">
 								<span className="bold">Category: </span>
-								Novel, Thriller, Suspense, Adventure Fiction
+								{this.props.globalState.openBookInfo.category}
 							</div>
 							<div className="infoLine">
 								<span className="bold">Published: </span>
-								1999
+								{this.props.globalState.openBookInfo.published}
 							</div>
 							<p className="review">
-								Subterranean is a novel by James Rollins. Beneath the ice at the
-								bottom of the Earth is a magnificent subterranean labyrinth, a
-								place of breathtaking wonders – and terrors beyond imagining.
+								{this.props.globalState.openBookInfo.review}
 							</p>
 						</div>
 					</div>
@@ -66,4 +65,6 @@ const mapStateToProps = state => {
 	return state;
 };
 
-export default connect(mapStateToProps)(Modal);
+export default connect(mapStateToProps, {
+	closeBookInfo: closeBookInfo
+})(Modal);

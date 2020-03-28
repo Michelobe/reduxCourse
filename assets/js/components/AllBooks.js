@@ -10,23 +10,28 @@ class AllBooks extends Component {
 		};
 	}
 	clickedBtn = () => {};
+	showAllBooks = () => {
+		return this.props.booksData.map(book => {
+			return (
+				<div key={book.id} className="bookContainer">
+					<div
+						onClick={this.props.openBookInfo.bind(null, book)}
+						className="book"
+						style={{
+							background: `url('${book.coverURL}') center center no-repeat`,
+							backgroundSize: `contain`
+						}}
+					></div>
+				</div>
+			);
+		});
+	};
 	async test() {}
 	render() {
 		console.log(this.props);
 		return (
 			// =====================ALLBOOKS============================
-			<section className="allBooks">
-				<div className="bookContainer">
-					<div
-						onClick={this.props.openBookInfo}
-						className="book"
-						style={{
-							background: `url('img/subterraneanBook.jpg') center center no-repeat`,
-							backgroundSize: `contain`
-						}}
-					></div>
-				</div>
-			</section>
+			<section className="allBooks">{this.showAllBooks()}</section>
 			// =====================ALLBOOKS============================
 		);
 	}

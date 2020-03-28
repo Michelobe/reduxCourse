@@ -27,6 +27,7 @@ export const appStateReducer = (state = initialState, action) => {
 
 		case 'openBookInfo':
 			newState = Object.assign({}, state, {
+				openBookInfo: action.payload,
 				popupOpen: true
 			});
 			console.log('============NEW STATE');
