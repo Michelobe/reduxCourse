@@ -18,7 +18,7 @@ export const appStateReducer = (state = initialState, action) => {
 			break;
 
 		case 'removeBook':
-			var myList = state.myList.filter(item => item.id !== action.payload);
+			var myList = state.myList.filter(book => book !== action.payload);
 			newState = Object.assign({}, state, {
 				myList: myList
 			});
@@ -46,6 +46,8 @@ export const appStateReducer = (state = initialState, action) => {
 			newState = Object.assign({}, state, {
 				listOpen: true
 			});
+			console.log('============OPEN LIST');
+			console.log('openList');
 			return newState;
 			break;
 
